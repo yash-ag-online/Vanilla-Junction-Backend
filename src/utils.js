@@ -2,6 +2,7 @@ export const envValues = Object.freeze({
   port: Number(process.env.PORT),
   origin: process.env.ORIGINS.toString().split(','),
   node_env: process.env.NODE_ENV.toString(),
+  mongodb_uri: process.env.MONGODB_URI.toString(),
 });
 
 export class ApiResponse {

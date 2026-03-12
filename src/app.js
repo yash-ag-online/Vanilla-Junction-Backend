@@ -5,8 +5,12 @@ import express from 'express';
 import morgan from 'morgan';
 import { ApiError, ApiResponse, asyncHandler, envValues } from './utils.js';
 import { statusCodes } from './constants.js';
+import { connectToMongoDB } from './db.js';
 
 const app = express();
+
+// MongoDB Connection
+await connectToMongoDB();
 
 // Common Middlewares
 app.use(express.json());
