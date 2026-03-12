@@ -1,8 +1,12 @@
+import { Schema } from 'mongoose';
+
 export const envValues = Object.freeze({
   port: Number(process.env.PORT),
   origin: process.env.ORIGINS.toString().split(','),
   node_env: process.env.NODE_ENV.toString(),
   mongodb_uri: process.env.MONGODB_URI.toString(),
+  referesh_token_secret: process.env.REFERESH_TOKEN_SECRET.toString(),
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET.toString(),
 });
 
 export class ApiResponse {
@@ -56,3 +60,20 @@ export const asyncHandler = (handler) => {
     }
   };
 };
+
+export const phoneNumberSchema = new Schema({
+  countryCode: {
+    type: String,
+    enum: ['+91'],
+    default: '+91',
+    required: true,
+  },
+  number: {
+    type: String,
+    maxLength: [10, 'Phone number must contain exactly 10 digits'],
+    minLength: [10, 'Phone number must contain exactly 10 digits'],
+    required: true,
+    unique: true,
+    match: /^\d+$/,
+  },
+});
