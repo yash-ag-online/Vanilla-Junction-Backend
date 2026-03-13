@@ -36,6 +36,11 @@ const customerSchema = new Schema(
       }),
       default: null,
     },
+    orderHistory: {
+      type: [Schema.Types.ObjectId],
+      ref: 'Order',
+      required: true,
+    },
   },
   { timestamps: true },
 );

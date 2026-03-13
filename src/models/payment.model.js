@@ -23,6 +23,11 @@ const paymentSchema = new Schema(
       ref: 'Customer',
       required: true,
     },
+    orderId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Order',
+      required: true,
+    },
   },
   { timestamps: true },
 );
